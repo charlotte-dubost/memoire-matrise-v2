@@ -1,0 +1,50 @@
+\Chapter{ETUDE DE LA RESISTANCE D'UNE ROUE CYR}\label{sec:Theme3}
+
+\section{Masse minimale}
+
+Réduire la masse de la roue Cyr revient à enlever de la matière. Il existe donc une masse minimale en dessous de laquelle la roue ne pourra pas résister aux contraintes induites par le poids de l'utilisateur.
+
+\begin{itemize}
+    \item On commence par calculer les contraintes lorsque la roue est comprimée par une force $F$: La contrainte dans l'arrête extérieure s'exprime $\sigma_i=k_i\sigma$ \cite{roark},
+    où sigma est la contrainte calculée pour une poutre droite: $\sigma=\frac{Mr_2}{I_z}$, avec $I_z=\frac{\pi}{2}(r_2^4-r_1^4)$ et $M=\frac{\pi}{4}FR$.
+    D'après les formules du livre de Roark, $k_i$ s'exprime $k_i=\frac{1}{4\beta}\frac{1-\beta}{\frac{R_c}{r_2}-1}[1+(\frac{r_1}{r_2})^2]$ avec $\beta=\frac{1}{2}[\frac{2R_c}{r_2}-\sqrt{(\frac{R_c}{r_2})^2-1}-\sqrt{(\frac{R_c}{r_2})^2-(\frac{r_1}{r_2})^2}]$ 
+    \item Il ne reste plus qu'à déterminer le rayon de courbure de la roue comprimée, comme illustré sur la figure \ref{fig:ellr}: $R_c=\frac{a_r^2}{b_r}$, $a_r$ et $b_r$ étant respectivement les demi grand axe et demi petit axe de l'ellipse que devient la roue lorsqu'elle est comprimée.\\
+    
+    \begin{figure}[htb]
+    \centering
+    \input{images_contraintes/ellipse.tex}
+    \caption{Représentation schématique d'un tore plié par une force de compression F. Il devient une ellipse de demi grand axe $a_r$ et de demi petit axe $b_r$. La zone où les contraintes sont maximales correspond à l'endroit où la force est appliquée.}
+    \label{fig:ellr}
+    \end{figure}
+    
+\begin{itemize}
+    \item Pour calculer $a_r$ et $b_r$, on utilise les formules du livre de Roark qui donnent les variations de diamètre horizontal $\Delta D_h$ et vertical $\Delta D_v$ d'une anneau comprimé selon son diamètre avec une force $F$, et on aura ainsi $a_r=R+\frac{\Delta D_h}{2}$ et $b_r=R+\frac{\Delta D_v}{2}$.
+    \item D'après les formules de Roark, $\Delta D_h=\frac{FR^3}{EI}(\frac{1}{2}(1+\frac{I}{AR^2}+\frac{2EI}{GAR^2})-1+\frac{2}{/pi}(1-\frac{I}{AR^2})^2)$ et $\Delta D_v=-\frac{FR^3}{EI}(\frac{\pi}{4}(1-\frac{I}{AR^2}+\frac{2EI}{GAR^2})-\frac{2}{/pi}(1-\frac{I}{AR^2})^2)$, où $A$ est l'aire de section, $E$, le module de Young, $G$, le module de cisaillement, $R$, le rayon médian de la roue, et $I$ le moment de section quadratique selon l'axe principal perpendiculaire au plan de la roue.
+    \item En implémentant numériquement les équations ci-dessus, on est capable de calculer les contraintes maximales auxquelles sera soumise la roue pour une force de compression $F$ donnée. Pour $F=900N$, en fixant $r_2$ et en faisant varier $r_1$ de $0$ à $r_2$, on est capable de tracer les contraintes maximales, en fonction de la masse de la roue, $m_r=2\pi\rho A R$. Comme l'illustre la figure-\ref{fig:mmin1} ci-dessous, il est alors possible de déterminer la masse à partir de laquelle les contraintes passent sous le seuil de $63 MPa$, et donc à partir de laquelle il y a rupture.
+    
+\end{itemize}
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=7in]{images_2ddl/mmin1.png}
+\caption{Contraintes maximales dans la roue en fonction de sa masse, la courbe de gauche correspond à un rayon de section externe $r_2=2.5 cm$ et un rayon de section interne $r_1$ variant de $0.0$ à $2.49 cm$. La courbe de droite correspond à à $r_2=5.0 cm$ et $r_1$ variant de $0.0$ à $4.99 cm$}
+\label{fig:mmin1}
+\end{figure}
+
+
+\begin{itemize}
+    \item On peut donc implémenter ce procédé numériquement pour déterminer cette valeur minimale de la masse pour en fonction de $r_2$. Le resultat de l'implémentation est présenté à la figure-\ref{fig:mmin2} ci-dessous. 
+\end{itemize}
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=4in]{images_2ddl/mmin2.png}
+\caption{Masse minimale de la roue en fonction de $r_2$}
+\label{fig:mmin2}
+\end{figure}
+
+
+\item Pour ce qui suit, $r_2$ sera fixé à $1.75 cm$, la masse minimale sera donc $2.0 kg$
+\end{itemize}

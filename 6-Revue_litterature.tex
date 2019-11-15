@@ -1,0 +1,28 @@
+\Chapter{REVUE DE LITTÉRATURE}\label{sec:RevLitt}
+
+\section{Le disque d'Euler}
+\subsection{Définition générale et lien avec la roue Cyr}
+Le disque d'Euler est un disque plein semblable à une grosse pièce de monnaie. Son mouvement peut être découpé en deux phases bien distinctes:
+\begin{itemize}
+\item Phase 1, ou phase initiale: Le disque, incliné, roule sur sa tranche en suivant une trajectoire circulaire
+\item Phase 2, ou phase terminale: le disque se met à tourner de telle manière que le point de contact avec le sol se déplace de plus en plus rapidement le long de son contour, un mouvement d'oscillation apparait, accompagné d'un son vibratoire \cite{ringing}, et atteint sa fréquence maximale avant que le disque tombe à plat sur le sol.
+\end{itemize}
+
+C'est de cette dernière phase, la phase terminale, que le disque d'Euler tient sa popularité. Son côté spéctaculaire en fait un jouet éducatif de choix, tandis que son comportement chaotique attise les curiosités scientifiques. Suite à de nombreuses publications, il a été determiné que le comportement curieux du disque au terme de cette phase était du à la viscosité de l'air.\\
+
+Ce système nous interesse particulièrment car son mouvement correspond exactement à un des deux mouvements qu'on souhaite modéliser afin d'identifier les paramètres mécaniques et géométriques déterminants et de caractériser leur influence. Il s'agit du mouvement dont on souhaite étudier la stabilité dynamique: la roue roule sur sa tranche en décrivant des cercles de plus en plus petits, avant d'entrer en phase terminale. Ces deux phases correpondent respectivement aux deux figures fondamentales de roue Cyr que sont la roue et la pièce (présentées à l'introduction). 
+
+
+\subsection{Modèle mathématique et intégration numérique}
+Parmi les nombreuses publications relatives au disque d'Euler on peut trouver des modèles mathématiques poussés, développés en vue d'une intégration numérique. C'est le cas des articles de Campos et al \cite{campos} ainsi que de Kessler et O'Reily \cite{ringing} dont les équations sont intégrées numériquement, ce qui permet de caractériser le comportement du disque en termes de trajectoire du point de contact avec le sol, de variation d'énergie et de fréquence. 
+
+\subsection{étude de la stabilité en régime permanent}
+Une autre publication particulièrement intéressante pour notre étude est l'article de Batista \cite{Batista}, qui étudie la stabilité du disque d'Euler en régime permanent, correspondant à la phase 1 avec une énergie mécanique constante. Batista développe un modèle cinématique du disque d'Euler et définit des conditions de stabilité reposant sur le signe de $\Omega_0^2$, la vitesse à laquelle le disque décrit des cercles en roulant. Ce signe dépendant de l'angle d'inclinaison du disque, $\theta_0$ et du rayon des cercles décrits, $r_c$, pour chaque couple $(\theta_0,r_c)$ le système est stable ou alors le régime permanent ne peut pas exister. Avec un raisonnement similaire, Batista détermine si en cas de stabilité le système reste stable ou non en cas de perturbation. Le résultat final est une carte de stabilité d'abscisse $\theta_0$ et d'ordonnée $r_c$, où la couleur de chaque point correspond à un des trois cas: stable, indéfini (le régime permanent ne peut pas exister), ou instable en cas de perturbation.
+
+\section{Elasticité et saut d'une roue Cyr}
+\subsection{Elasticité}
+Afin d’étudier le stockage d’énergie élastique dans la roue lorsqu’elle est comprimée par une certaine force, nous avons besoin de calculer la flèche imposée par la force en question. Dans son livre \cite{roark}, Roark développe des formules pour différents cas de chargement d’un anneau élastique, permettant entre autres de calculer les variations de diamètre horizontal et vertical en fonction des forces auxquelles l’anneau est soumis. \\
+On y trouve également toutes les formules nécessaires au calcul des contraintes dans la roue en fonction de diverses géométries de section.
+
+\subsection{Saut}
+ Yang et Kim \cite{yangkim} étudient le comportement d'anneaux de diamètres milimétriques, faits de polyimides où d'acier et de sections variables, compressés puis relachés. Leur saut est capturé par une caméra haute vitesse. Les résultats sont traités sous forme d'études adimensionnelles centrées sur l'énergie et la hauteur maximale de saut, $H_{max}$, puis confrontés à un modèle théorique développé à partir d'un bilan d'énergie. Une des conclusions phares de l'article est qu'un pourcentage constant ($57\%$) de l'énergie de déformation élastique initiale est convertie en énergie potentielle pour le saut de l'anneau et ce, indépendamment de tous les paramètres du modèle (propriétés mécaniques, géométriques, flèche imposée...)
