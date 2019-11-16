@@ -59,6 +59,29 @@ où $E$ est le module d'Young et $I$ est le moment moment quadratique de la sect
 \label{fig:repos}
 \end{figure}
 
+\subsection{Limite en comportement linéaire}
+
+A partir d'une certaine flèche $\delta$ imposée par une force de compression $F$, l'anneau ne se comporte plus de manière linéaire et la relation $F=k\delta$, où $k$ est la constante définie dans l'équation \ref{eq:0}, n'est plus valable. 
+Afin de définir la valeur limite de $\delta$ au dessus de laquelle on sort du domaine de comportement linéaire, une étude éléments finis prenant en compte les non linéarités d'ordre géométrique est réalisée, puis comparée avec le modèle théorique linéaire. Dans cette étude, la roue est modélisée avec des éléments poutres, le déplacement $\delta$ est imposée comme paramètre d'entrée et la force $F$, relevée comme donnée de sortie, pour des raisons de convergence.
+Les résultats sont présentés en figure \ref{fig:lin1}.
+On considère qu'on sort de la zone de comportement linéaire lorsque la valeur absolue de l'erreur relative entre les deux modèles, $\epsilon=\frac{F_{éléments finis}-F_{théorique}}{F_{théorique}}$ dépasse les 10\%. La limite du domaine de comportement linéaire correspond donc à $\frac{delta}{R}<0.1$
+
+\begin{figure}[h]
+\centering
+\input{images_2ddl/lineaire.tex}
+\caption{Comparaison entre une étude éléments finis d'une roue réalisée avec des éléments poutres, dans laquelle on prend en compte les non linéarités géométrique, et le modèle théorique linéaire où la force appliquée et le déplacement sont liés par la constante $k$ selon la relation $F=k \delta$}
+\label{fig:lin1}
+\end{figure}
+
+En dérivant la courbe de $F=f(\delta)$ obtenue par analyse éléments finis, on obtient l'évolution de la raideur $k$ en fonction de $\frac{\delta}{R}$. Le résultat est présenté en figure \ref{fig:lin2}. Dans le domaine linéaire, on prendre comme valeur de $k$ la valeur moyenne des points situés dans la zone $\frac{\delta}{R}<0.1$
+
+\begin{figure}[h]
+\centering
+\input{images_2ddl/lineaire2.tex}
+\caption{Évolution du coefficient de raideur $k$ en fonction du ratio $\delta/R$. Cette courbe est obtenue par la dérivation des points obtenus par analyse éléments finis de la figure \ref{fig:lin1}, en utilisant la méthode des différences finies centrées.}
+\label{fig:lin2}
+\end{figure}
+
 \subsection{Mise en équations}
 
 On note $t=-t_0$ le moment auquel on relâche le ressort, $t=0$ le moment auquel la masse inférieure quitte le sol et $t_f$ le moment auquel le centre de gravité du système atteint sa hauteur maximale.
@@ -266,7 +289,7 @@ Les paramètres $F$, $k$ et $m_r$ doivent rester supérieurs aux valeurs limites
 Les limites seront indiquées par des pointillés sur les tracés des figures \ref{fig:eta} et \ref{fig:effe}.
 \\
 
-\begin{figure}
+\begin{figure}[htb]
 \centering
 \def\svgwidth{320}
 \input{images_2ddl/eta.tex}
@@ -275,7 +298,7 @@ Les limites seront indiquées par des pointillés sur les tracés des figures \r
 \end{figure}
 
 
-\begin{figure}
+\begin{figure}[htb]
 \centering
 \def\svgwidth{320}
 \input{images_2ddl/eff.tex}
@@ -290,3 +313,51 @@ Remarques:
     
 \end{itemize}
 
+
+\subsection{Comparaison avec les points de l'article \textit{Jumping hoops}}
+Dans leur article \textit{Jumping hoops} \cite{yangkim}, présenté au chapitre \ref{sec:RevLitt}, Yang et Kim étudient le saut d'anneaux comprimés puis relâchés, dont le mouvement est identique à celui étudié au moyen du modèle deux degrés de liberté développé dans les sections précédentes.
+Leur modèle théorique est basé sur des bilans énergétiques réalisés au moment où l'anneau quitte le sol et au moment où son centre de gravité atteint sa hauteur maximale, puis complété par leurs résultats expérimentaux, présentés par la figure \ref{fig:ykres}
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=4.5in]{images_2ddl/ykres.png}
+\caption{Résultats expérimentaux de Yang et Kim, sous forme de graphique adimensionnel. $H_{max}$ représente la hauteur maximale du saut, $h_c=\frac{E}{\rho g}$, où $E$ est le module d'Young, $\rho$ la masse volumique et $g$ l'accélération gravitationnelle. $\tau$ représente la longueur d'une des côtés de la section (l'autre, $w$ est fixé à 3 mm), $R$ est le rayon médian de la roue et $\delta$ est la flèche initiale imposée.}
+\label{fig:ykres}
+\end{figure}
+
+A partir de leur modèle théorique et de leurs résultats expérimentaux, Yang et Kim arrivent à la conclusion suivante: si on néglige l'énergie dissipée par la traînée, le ratio de l'énergie potentielle gravitationnelle et de l'énergie totale fournie initialement par déformation élastique est constant: $\dfrac{E_{p,g}}{E_{tot}}=0.57$.
+
+La superposition des résultats expérimentaux de Yang et Kim et des courbes issues de nos modèles théoriques sont présentés figures \ref{fig:ykmae} et \ref{fig:yke}.
+Pour ce qui concerne $H_{max}$, la figure \ref{fig:ykmae} montre que les résultats expérimentaux de Yang et Kim concordent avec le modèle théorique à deux degrés de liberté développé et étudiés dans les sections précédentes.
+Pour le ratio d'efficacité énergétique $\dfrac{E_{p.g}}{E_{tot}}$, on observe des différences entre notre modèle théorique et les résultats expérimentaux de Yang et Kim.
+Ces différences pourraient être expliquées d'une part par l'énergie dissipée par force de trainée que nous avons choisi de négliger dans notre modèle, et d'autre part par un comportement non linéaire du coefficient de raideur. Pour vérifier cette dernière supposition, nous calculons la valeur du ratio $\dfrac{\delta}{R}$ et la comparer à la valeur limite $0.1$ que nous avions définie au début du chapitre, au delà de laquelle on sort de la zone de comportement linéaire.
+
+\begin{figure}[htb]
+\centering
+\def\svgwidth{320}
+\input{images_2ddl/ykmae1.tex}
+\caption{Graphique adimensionnel des variations de $H_{max}$ en fonction des paramètres déterminants du modèle}
+\label{fig:ykmae}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\def\svgwidth{320}
+\input{images_2ddl/yke3.tex}
+\caption{Variation de l'efficacité énergétique en fonction du ratio $F/(m_r g)$. La ligne pointillée rouge représente la valeur minimale que doit avoir $F$ pour qu'il y ait un saut.}
+\label{fig:yke}
+\end{figure}
+
+Pour tous les points expérimentaux de Yang et Kim $\dfrac{\delta}{R}>0.1$. Pour pouvoir observer une tendance, nous élargissons le seuil de tolérance: nous traçons uniquement les points dont le ratio correspondant $\dfrac{\delta}{R}$ est inférieur à $0.35$. Le résultat, réprésenté en figure \ref{fig:ytol}, met en évidence le fait que plus on va loin au delà du domaine de comportement linéaire, plus les points expérimentaux s'éloignent de la courbe représentant notre modèle théorique. Lorsqu'on sélectionne uniquement les points de non linéarité relativement faible ($\dfrac{\delta}{R}<0.35$), ces derniers sont proches de la courbe.
+Les résultats expérimentaux concordent donc avec notre modèle théorique à deux degrés de liberté développé dans les sections précédentes, qui est validé.
+
+\begin{figure}[htb]
+\centering
+\def\svgwidth{320}
+\input{images_2ddl/yktol3.tex}
+\caption{Variation de l'efficacité énergétique en fonction du ratio $F/(m_r g)$ pour $\frac{\delta}{R}<0.35$. Les résultats sont en accord avec la courbe théorique.}
+\label{fig:ytol}
+\end{figure}
+
+
+\subsection{Travail expérimental}
